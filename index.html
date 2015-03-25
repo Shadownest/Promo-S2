@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index2.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div ng-controller="weatherCtrl" class="content menu">
+            <form ng-submit="search()" ng-hide="meteo">
+                <center>
+                    <input type="text" value="" placeholder="Weather..." ng-model="city">
+                    <br />
+                    <input type="submit" value="Search">
+                </center>
+            </form>
+            <div class="weather menu" ng-show="meteo" ng-swipe-right="meteo=false">
+                <fieldset>
+                    <legend><center><strong>{{weather.city.name}} / {{weather.city.country}}</strong></center></legend>
+                    <div ng-repeat="temperature in weather.list" class="temp_day">
+                        <div ng-click="temperature.show=!temperature.show">
+                            <span class="date">{{temperature.dt*1000 | date:'dd/MM'}}</span>
+                            <img class="meteo" src="http://openweathermap.org/img/w/{{temperature.weather[0].icon}}.png"/>
+                            <span class="desc">{{temperature.weather[0].description}}</span>
+                            <span class="temperature">
+                                <span style="color:blue">{{temperature.temp.min}}</span> < {{temperature.temp.day}}°C < <span style="color:red">{{temperature.temp.max}}</span>
+                            </span>
+                            <div ng-show="temperature.show">
+                                <center>Pression : {{temperature.pressure}} hPa</center>
+                                <center>Humidité {{temperature.humidity}} %</center>
+                                <center>Vent : {{temperature.speed}} km/h</center>
+                                <center>Couverture nuageuse : {{temperature.clouds}} %</center>
+                                <center>Pluie : {{temperature.clouds}} mm</center>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <script type="text/javascript" src="js/angular.js"></script>
+        <script type="text/javascript" src="js/angular-touch.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

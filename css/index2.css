@@ -1,0 +1,39 @@
+.content
+{
+	background-color: #200060;
+}
+.weather
+{
+	background-color: #200060;
+}
+.temp_day
+{
+	background-color: #500090;
+	margin:2px;
+}
+.menu
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+}
+.date
+{
+	margin-left:10px;
+	margin-right:5px;
+}
+.desc
+{
+	display:inline-block;
+	width:130px;
+}
+.meteo
+{
+	vertical-align:middle;
+}
+.temperature
+{
+	display:inline-block;
+}
